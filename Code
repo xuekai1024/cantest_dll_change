@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <io.h>
+
+int main(void)
+{
+    if(!access("ControlCAN_zlg.dll",0))
+    {
+        rename("ControlCAN.dll","ControlCAN_gc.dll");
+        rename("ControlCAN_zlg.dll","ControlCAN.dll");
+        printf("gc to zlg ok");
+    }
+    else
+    {
+        if (!access("ControlCAN_gc.dll",0))
+        {
+            rename("ControlCAN.dll","ControlCAN_zlg.dll");
+            rename("ControlCAN_gc.dll","ControlCAN.dll");
+            printf("zlg to gc ok");
+        }
+        else
+        {
+            printf("zlg and gc dll files not exist,please check it!!");
+        }
+        
+    }
+
+    system("pause");
+    return (0);
+}
